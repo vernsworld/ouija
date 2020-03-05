@@ -1,18 +1,16 @@
 //framerate
-let fr = 25; //starting FPS
+let fr = 25; 
 //excoplasm vectors
 let v1 = new p5.Vector(40, 50, 0);
 let v2 = new p5.Vector(40, 50, 0);
 let v3 = new p5.Vector(100, 100, -1);
-//perlin noise stuff for the future
 let noiseScale=0.02;
 let xoff = 0.0;
 let yoff = 0.0;
 let zoff = 0.0;
-//images some not used
+//images / class
 let hands;
 let ghost;
-//class vibes
 let hand;
 let ghosts = [];
 let howManyGhosts = 10;
@@ -27,14 +25,14 @@ function preload(){
 
 function setup(){
 	createCanvas(windowWidth, windowHeight);
-  	frameRate(fr); // Attempt to refresh at starting FPS
+  	frameRate(fr); 
 
   	ghost = loadImage('assets/spook.png');
 	hand = loadImage('assets/hand.png');
 	ouija = loadImage('assets/ouija.png');
 	
 	hands = new SpookyGhosts();
-	for (let i = 0; i < howManyGhosts	; i++){
+	for (let i = 0; i < howManyGhosts; i++){
 		ghosts[i] = new SpookyGhosts
 	();
 	}
@@ -49,7 +47,7 @@ function draw(){
 	//summon the class my dudes
 	hands.display();
 	hands.move();
-	for (let i = 0; i < howManyGhosts	; i++){
+	for (let i = 0; i < howManyGhosts; i++){
 		ghosts[i].move();
 		ghosts[i].display();
 	}
