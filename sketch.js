@@ -22,14 +22,14 @@ let loopStart = 0.5;
 let loopDuration = 0.2;
 
 function preload(){
-	tune = loadSound('assets/y.mp3');
+  	tune = loadSound('assets/y.mp3');
 }
 
 function setup(){
 	createCanvas(windowWidth, windowHeight);
-  frameRate(fr); // Attempt to refresh at starting FPS
+  	frameRate(fr); // Attempt to refresh at starting FPS
 
-  ghost = loadImage('assets/spook.png');
+  	ghost = loadImage('assets/spook.png');
 	hand = loadImage('assets/hand.png');
 	ouija = loadImage('assets/ouija.png');
 	
@@ -55,18 +55,18 @@ function draw(){
 	}
 	//ectoplasm
 	beginShape();
-	 noStroke();
-	 fill(0, 255, 0, 30);
-	 let xoff = 0; 
-	 for (let x = 0; x <= width; x += 10) {
+	noStroke();
+	fill(0, 255, 0, 30);
+	let xoff = 0; 
+	for (let x = 0; x <= width; x += 10) {
 	   	let y = map(noise(xoff, yoff), 0, 1, 20, 500);
 	    vertex(x, y);
 	    xoff += 0.05;
 	  }
 	    yoff += 0.1;
-	 vertex(width, height);
-	 vertex(0, height);
-	  endShape(CLOSE);
+	vertex(width, height);
+	vertex(0, height);
+	endShape(CLOSE);
 	//the player
 	image(hand, mouseX, mouseY, 300, 300);
 
@@ -99,6 +99,6 @@ class SpookyGhosts {
 }
 //start music
 function canvasPressed() {
-  tune.loop();
-  background(0, 200, 50);
+	tune.loop();
+	background(0, 200, 50);
 }
