@@ -18,6 +18,9 @@ let yoff = 0.0; // 2nd dimension of perlin noise
 let zoff = 0.0;
 
 let tune;
+let loopStart = 0.5;
+let loopDuration = 0.2;
+
 function preload(){
 	tune = loadSound('assets/y.mp3');
 }
@@ -34,9 +37,10 @@ function setup(){
 	for (let i = 0; i < howManyHands	; i++){
 		searchers[i] = new HandSearch();
 	}
-	
-	tune.loop();
 
+	//tune.loop();
+	let cnv = createCanvas(windowWidth, windowHeight);
+  cnv.mousePressed(canvasPressed);
 }
 
 function draw(){
@@ -80,7 +84,7 @@ class HandSearch {
 		this.yspeed = random(0,1);
 	}
 	display(){
-		image(ghost, this.x, this.y, 100, 100, 50);
+		image(ghost, this.x, this.y, 100, 100);
 	}
 	move(){
 		this.x = this.x + this.xspeed;
@@ -95,7 +99,9 @@ class HandSearch {
 		}
 	}
 
-
-
 }
 
+function canvasPressed() {
+  tune.loop();
+  background(0, 200, 50);
+}
