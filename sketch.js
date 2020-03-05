@@ -1,22 +1,22 @@
+//framerate
 let fr = 25; //starting FPS
-
+//excoplasm vectors
 let v1 = new p5.Vector(40, 50, 0);
 let v2 = new p5.Vector(40, 50, 0);
 let v3 = new p5.Vector(100, 100, -1);
-
-
-let hands;
-let ghost;
-
-let hand;
-let searchers = [];
-let howManyHands = 10;
-
+//perlin noise stuff for the future
 let noiseScale=0.02;
 let xoff = 0.0;
-let yoff = 0.0; // 2nd dimension of perlin noise
+let yoff = 0.0;
 let zoff = 0.0;
-
+//images some not used
+let hands;
+let ghost;
+//class vibes
+let hand;
+let ghosts = [];
+let howManyGhosts = 10;
+//music
 let tune;
 let loopStart = 0.5;
 let loopDuration = 0.2;
@@ -33,12 +33,12 @@ function setup(){
 	hand = loadImage('assets/hand.png');
 	ouija = loadImage('assets/ouija.png');
 	
-	hands = new HandSearch();
-	for (let i = 0; i < howManyHands	; i++){
-		searchers[i] = new HandSearch();
+	hands = new SpookyGhosts();
+	for (let i = 0; i < howManyGhosts	; i++){
+		ghosts[i] = new SpookyGhosts
+	();
 	}
-
-	//tune.loop();
+	//makes the whole screen clickable to play the audio loop
 	let cnv = createCanvas(windowWidth, windowHeight);
   cnv.mousePressed(canvasPressed);
 }
@@ -46,17 +46,14 @@ function setup(){
 function draw(){
 	background(ouija, windowWidth, windowHeight);
 	noCursor();
-
-	//tune.loop();
-
+	//summon the class my dudes
 	hands.display();
 	hands.move();
-	for (let i = 0; i < howManyHands	; i++){
-		searchers[i].move();
-		searchers[i].display();
+	for (let i = 0; i < howManyGhosts	; i++){
+		ghosts[i].move();
+		ghosts[i].display();
 	}
-
-
+	//ectoplasm
 	beginShape();
 	 noStroke();
 	 fill(0, 255, 0, 30);
@@ -70,12 +67,12 @@ function draw(){
 	 vertex(width, height);
 	 vertex(0, height);
 	  endShape(CLOSE);
-
+	//the player
 	image(hand, mouseX, mouseY, 300, 300);
 
 }
 
-class HandSearch {
+class SpookyGhosts {
 	constructor(){
 		//give ball a location
 		this.x = random(width);
@@ -100,7 +97,7 @@ class HandSearch {
 	}
 
 }
-
+//start music
 function canvasPressed() {
   tune.loop();
   background(0, 200, 50);
